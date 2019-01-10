@@ -58,13 +58,13 @@ def main():
      #解答游戏
 
      #生成新品图部分
-    mainBoard, solutionSeq = generateNewPuzzle(80)
+    mainBoard, solutionSeq = generateNewPuzzle(80)#参数是循环的次数
      #获得启动板块状态
     SOLVEDBOARD = getStartingBoard()
      #存储坐标的列表
     while True: # 主游戏循环
         #slideTo = None # 方向如果有的话画片移动
-        msg = '单击“平铺”或按箭头键滑动.' # 包含要在左上角显示的消息。
+        msg = 'Click tile or press arrow keys to slide.' # 包含要在左上角显示的消息。
         #if mainBoard == SOLVEDBOARD:
             #msg = 'Solved!'
         drawBoard(mainBoard, msg)#画板函数
@@ -82,12 +82,12 @@ def terminate():
     sys.exit()
 #退出检测函数
 def checkForQuit():
-    for event in pygame.event.get(QUIT): # get all the QUIT events
-        terminate() # terminate if any QUIT events are present  
-    for event in pygame.event.get(KEYUP): # get all the KEYUP events
+    for event in pygame.event.get(QUIT): #获取所有退出事件
+        terminate() # 如果存在退出事件就停止  
+    for event in pygame.event.get(KEYUP): # 获取所有键控事件
         if event.key == K_ESCAPE:
-            terminate() # terminate if the KEYUP event was for the Esc key
-        pygame.event.post(event) # put the other KEYUP event objects back
+            terminate() # 如果keyup事件用于esc键，则终止
+        pygame.event.post(event) # 将其他keyup事件对象放回
 #按钮位置制作专用函数
 '''
 @param text  文本名
@@ -100,7 +100,7 @@ def checkForQuit():
 def makeText(text, color, bgcolor, top, left):
     # create the Surface and Rect objects for some text.
     textSurf = BASICFONT.render(text, True, color, bgcolor)#文字字体,是否开启抗锯齿（就是是否平滑）,颜色,别境颜色
-    textRect = textSurf.get_rect()#返回一个矩形外框
+    textRect = textSurf.get_rect()#返回一个数字矩形外框
     textRect.topleft = (top, left)#定义高和宽
     return (textSurf, textRect)
 '''
@@ -126,18 +126,18 @@ def getStartingBoard():
 画滑片
 @param tilex   画片的位置
 @param tiley   画片的位置
-@param number
+@param number  数字
 @param adjx  滑片的相对位置
 @param adjy  滑片的相对位置
 '''
 def drawTile(tilex, tiley, number, adjx=0, adjy=0):
-    # draw a tile at board coordinates tilex and tiley, optionally a few
-    # pixels over (determined by adjx and adjy)
+    # 在滑片坐标tilex和tiley处绘制一个图块，可以选择一些图块
+    # 像素移动(由 adjx和adjy决定)
     left, top = getLeftTopOfTile(tilex, tiley)
     pygame.draw.rect(DISPLAYSURF, TILECOLOR, (left + adjx, top + adjy, TILESIZE, TILESIZE))
-    textSurf = BASICFONT.render(str(number), True, TEXTCOLOR)
+    textSurf = BASICFONT.render(str(number), True, TEXTCOLOR)#render(字符,是否抗锯齿,字体颜色,背景颜色)
     textRect = textSurf.get_rect()
-    textRect.center = left + int(TILESIZE / 2) + adjx, top + int(TILESIZE / 2) + adjy
+    textRect.center = left + int(TILESIZE / 2) + adjx, top + int(TILESIZE / 2) + adjy#字体剧中
     DISPLAYSURF.blit(textSurf, textRect)
 '''
 @param  tileX
@@ -171,11 +171,33 @@ def drawBoard(board, message):
 '''
 生成拼图
 '''
+
 def generateNewPuzzle(numSlides):
     sequence=[]
     board = getStartingBoard()
     drawBoard(board, '')
-    pygame.display.update()
-    pygame.time.wait(500)
-    lastMove = None
     return (board, sequence)
+
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
