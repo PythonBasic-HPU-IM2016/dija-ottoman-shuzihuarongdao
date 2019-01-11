@@ -51,7 +51,7 @@ def main():
     NEW_SURF,   NEW_RECT   = makeText('开新游戏', TEXTCOLOR, TILECOLOR, WINDOWWIDTH - 120, WINDOWHEIGHT - 60)
     SOLVE_SURF, SOLVE_RECT = makeText('解答游戏',    TEXTCOLOR, TILECOLOR, WINDOWWIDTH - 120, WINDOWHEIGHT - 30)
 
-    mainBoard, solutionSeq = generateNewPuzzle(20)
+    mainBoard, solutionSeq = generateNewPuzzle(80)
     SOLVEDBOARD = getStartingBoard() 
     allMoves = [] 
     
