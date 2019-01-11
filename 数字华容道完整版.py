@@ -38,7 +38,7 @@ def main():
     global FPSCLOCK, DISPLAYSURF, BASICFONT, BASICFONT1 , RESET_SURF, RESET_RECT, NEW_SURF, NEW_RECT, SOLVE_SURF, SOLVE_RECT
     pygame.mixer.init() 
     track1=pygame.mixer.music.load("a.mp3")  
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(5)
     pygame.init()
     
     FPSCLOCK = pygame.time.Clock()
