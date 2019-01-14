@@ -38,7 +38,7 @@ def main():
     global FPSCLOCK, DISPLAYSURF, BASICFONT, BASICFONT1 , RESET_SURF, RESET_RECT, NEW_SURF, NEW_RECT, SOLVE_SURF, SOLVE_RECT
     pygame.mixer.init() 
     track1=pygame.mixer.music.load("a.mp3")  
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(5)
     pygame.init()
     
     FPSCLOCK = pygame.time.Clock()
@@ -51,7 +51,7 @@ def main():
     NEW_SURF,   NEW_RECT   = makeText('开新游戏', TEXTCOLOR, TILECOLOR, WINDOWWIDTH - 120, WINDOWHEIGHT - 60)
     SOLVE_SURF, SOLVE_RECT = makeText('解答游戏',    TEXTCOLOR, TILECOLOR, WINDOWWIDTH - 120, WINDOWHEIGHT - 30)
 
-    mainBoard, solutionSeq = generateNewPuzzle(20)
+    mainBoard, solutionSeq = generateNewPuzzle(80)
     SOLVEDBOARD = getStartingBoard() 
     allMoves = [] 
     
